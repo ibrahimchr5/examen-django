@@ -24,6 +24,7 @@ INSTALLED_APPS = [
     
     # Third-party apps
     'rest_framework',
+    'rest_framework_simplejwt',
     'corsheaders',
     
     # Local apps
@@ -105,7 +106,6 @@ CORS_ALLOW_CREDENTIALS = True
 
 
 # CORS settings for cross-origin requests
-CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',  # React frontend URL
 ]
