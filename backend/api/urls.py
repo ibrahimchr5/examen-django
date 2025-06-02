@@ -2,21 +2,27 @@ from django.urls import path
 from rest_framework.urlpatterns import format_suffix_patterns
 from . import views
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+from graphene_django.views import GraphQLView
+from django.views.decorators.csrf import csrf_exempt
 
+# Define your API endpoints
 urlpatterns = [
-    # Item endpoints
     path('items/', views.ItemList.as_view(), name='item-list'),
     path('items/<int:pk>/', views.ItemDetail.as_view(), name='item-detail'),
-
-    # User endpoints
     path('users/', views.UserList.as_view(), name='user-list'),
     path('users/<int:pk>/', views.UserDetail.as_view(), name='user-detail'),
-
-    # Registration and token endpoints
     path('register/', views.UserRegistration.as_view(), name='user-registration'),
-    path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),  # JWT token obtain endpoint
-    path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),  # JWT token refresh endpoint
+    path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('me/', views.CurrentUserView.as_view(), name='current-user'),
+    path('logout/', views.LogoutView.as_view(), name='logout'),
+
 ]
 
-# Support for different formats in API responses (e.g., JSON, XML)
+# Add suffix pattern support for the API routes that need it
 urlpatterns = format_suffix_patterns(urlpatterns)
+
+# Add GraphQL route separately after applying format_suffix_patterns
+urlpatterns += [
+    path('graphql/', csrf_exempt(GraphQLView.as_view(graphiql=True))),  # GraphQL endpoint
+]
