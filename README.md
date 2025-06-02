@@ -119,12 +119,6 @@ The frontend runs on http://localhost:3000
 
 ---
 
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
 ## 🤝 Contributing
 
 1. Fork the project
@@ -137,6 +131,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📧 Contact
 
-Your Name - your.email@example.com
+Your Name - ibrahim.cherbib@sesame.com.tn
 
-Project Link: [https://github.com/your-username/your-repo](https://github.com/your-username/your-repo)
+Project Link: (https://github.com/ibrahimchr5/examen-django.git)
